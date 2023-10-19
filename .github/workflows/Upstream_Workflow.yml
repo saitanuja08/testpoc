@@ -12,6 +12,6 @@ jobs:
       - name: Trigger Workflow in Repository onboarding-platform-terraform
         uses: repo_dispatch_action
         with:
-          repository: saitanuja08/onboarding-platform-terraform
+          repository: saitanuja08/onboarding-platform-terraform/.github/actions/downstream-workflow
           event-type: trigger-workflow
           token: ${{ secrets.DOWNSTREAM_WORKFLOW_PAT }}
