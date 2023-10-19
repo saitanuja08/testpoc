@@ -1,0 +1,17 @@
+name: Upstream_Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Workflow in Repository onboarding-platform-terraform
+        uses: repo_dispatch_action
+        with:
+          repository: saitanuja08/onboarding-platform-terraform
+          event-type: trigger-workflow
+          token: ${{ secrets.DOWNSTREAM_WORKFLOW_PAT }}
