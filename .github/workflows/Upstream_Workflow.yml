@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger Workflow in Repository onboarding-platform-terraform
-        uses: repo_dispatch_action
+        uses: saitanuja08/onboarding-platform-terraform/.github/actions/downstream-workflow?master
         with:
           repository: saitanuja08/onboarding-platform-terraform/.github/actions/downstream-workflow
           event-type: trigger-workflow
