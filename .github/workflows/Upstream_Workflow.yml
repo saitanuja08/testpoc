@@ -5,7 +5,7 @@ on:
       downstream_workflow:
         description: 'ًWorkflow which will be triggered'
         required: true
-        default: 'Downstream_Workflow'
+        default: 'Downstream-Workflow'
 
       downstream_workflow_github_account:
         description: 'GitHub Account Owner'
@@ -15,7 +15,7 @@ on:
       downstream_workflow_repo_github:
         description: 'repo-name'
         required: true
-        default: ':onboarding-platform-terraform' 
+        default: 'onboarding-platform-terraform' 
 
 jobs:
   build:
