@@ -10,12 +10,12 @@ on:
       downstream_workflow_github_account:
         description: 'GitHub Account Owner'
         required: true
-        default: 'saitanuja08'
+        default: ':saitanuja08'
 
       downstream_workflow_repo_github:
         description: 'repo-name'
         required: true
-        default: 'onboarding-platform-terraform' 
+        default: ':onboarding-platform-terraform' 
 
 jobs:
   build:
@@ -25,7 +25,7 @@ jobs:
       # Checks-out the repository under $GITHUB_WORKSPACE, so our job can access it
       - name: Trigger Downstream Workflow
         run: |
-          curl -X POST https://api.github.com/repos/:userName/:repoName/dispatches \
+          curl -X POST https://api.github.com/repos/:saitanuja08/:onboarding-platform-terraform/dispatches \
           -H 'Accept: application/vnd.github.everest-preview+json' \
           -u ${{ secrets.ACTIONS_KEY }} \
           --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
