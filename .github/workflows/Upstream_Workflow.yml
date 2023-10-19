@@ -1,17 +1,32 @@
 name: Upstream_Workflow
-
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+     inputs:
+      downstream_workflow:
+        description: 'ًWorkflow which will be triggered'
+        required: true
+        default: 'Downstream_Workflow'
+
+      downstream_workflow_github_account:
+        description: 'GitHub Account Owner'
+        required: true
+        default: ':saitanuja08'
+
+      downstream_workflow_repo_github:
+        description: 'repo-name'
+        required: true
+        default: ':onboarding-platform-terraform' 
 
 jobs:
-  trigger:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Trigger Workflow in Repository onboarding-platform-terraform
-        uses: saitanuja08/onboarding-platform-terraform/.github/actions/downstream-workflow?master
-        with:
-          repository: saitanuja08/onboarding-platform-terraform/.github/actions/downstream-workflow
-          event-type: trigger-workflow
-          token: ${{ secrets.DOWNSTREAM_WORKFLOW_PAT }}
+      # Checks-out the repository under $GITHUB_WORKSPACE, so our job can access it
+      - name: Trigger Downstream Workflow
+        run: |
+          curl -X POST https://api.github.com/repos/:userName/:repoName/dispatches \
+          -H 'Accept: application/vnd.github.everest-preview+json' \
+          -u ${{ secrets.ACTIONS_KEY }} \
+          --data '{"event_type": "Trigger Workflow", "client_payload": { "repository": "'"$GITHUB_REPOSITORY"'" }}'
+      - uses: actions/checkout@v3
