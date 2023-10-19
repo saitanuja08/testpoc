@@ -5,7 +5,7 @@ on:
       downstream_workflow:
         description: 'ًWorkflow which will be triggered'
         required: true
-        default: 'Downstream-Workflow'
+        default: 'create-selective-resources'
 
       downstream_workflow_github_account:
         description: 'GitHub Account Owner'
