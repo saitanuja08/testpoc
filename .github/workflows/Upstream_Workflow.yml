@@ -10,7 +10,7 @@ on:
       downstream_workflow_github_account:
         description: 'GitHub Account Owner'
         required: true
-        default: ':saitanuja08'
+        default: 'saitanuja08'
 
       downstream_workflow_repo_github:
         description: 'repo-name'
